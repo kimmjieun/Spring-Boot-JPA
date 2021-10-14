@@ -20,17 +20,17 @@ public class MemberRepositoryTest {
     @Rollback(false) // 롤백하기 싫을 때때
     public void testMember() throws Exception{
         //given
-        Member member = new Member();
-        member.setUsername("memberA");
-
-        //when
-        Long saveId = memberRepository.save(member);
-        Member findMember = memberRepository.find(saveId);
-
-        //then
-        Assertions.assertThat(findMember.getId()).isEqualTo(member.getId());
-        Assertions.assertThat(findMember.getUsername()).isEqualTo(member.getUsername());
-        Assertions.assertThat(findMember).isEqualTo(member); // 영속성 컨테스트로 식별자 같으면 같은 엔티티
+//        Member member = new Member();
+//        member.setUsername("memberA");
+//
+//        //when
+//        Long saveId = memberRepository.save(member);
+//        Member findMember = memberRepository.find(saveId);
+//
+//        //then
+//        Assertions.assertThat(findMember.getId()).isEqualTo(member.getId());
+//        Assertions.assertThat(findMember.getUsername()).isEqualTo(member.getUsername());
+//        Assertions.assertThat(findMember).isEqualTo(member); // 영속성 컨테스트로 식별자 같으면 같은 엔티티
     }
 
     // 에러나는이유 트랜잭션이 없다, 모든 데이터 변경은 트랜잭션 안에 있어야한다
