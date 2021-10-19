@@ -80,6 +80,7 @@ public class OrderServiceTest {
         assertEquals("주문이 취소된 상품은 그만큼 재고가 증가해야한다. ",10,item.getStockQuantity());
     }
 
+
     private Member createMember(){
         Member member = new Member();
         member.setName("회원1");
