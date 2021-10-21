@@ -34,7 +34,7 @@ public class OrderSimpleApiController {
      * - Hibernate5Module 모듈 등록, LAZY = null 처리
      * - 양방향 관계 문제 발생 -> @JsonIgnore
      */
-    @GetMapping("api/v1/simple-orders")
+    @GetMapping("/api/v1/simple-orders")
     public List<Order> ordersV1() {
         List<Order> all = orderRepository.findAllByString(new OrderSearch());
         for (Order order : all) {
@@ -76,6 +76,19 @@ public class OrderSimpleApiController {
         }
     }
 
+    /**
+     * V3. 엔티티를 조회해서 DTO로 변환(fetch join 사용)
+     * - fetch join으로 쿼리 1번 호출
+     * 참고 : fetch join에 대한 자세한 내용은 JPA 기본편 참고(정말 중요)
+     */
+    @GetMapping("/api/v3/simple-orders")
+    public List<SimpleOrderDto> orderV3(){
+        List<Order> orders = orderRepository.findAllWithMemberDelivery();
+        List<SimpleOrderDto> result = orders.stream()
+                .map(o -> new SimpleOrderDto(o))
+                .collect(toList());
+        return result;
 
+    }
 
 }
