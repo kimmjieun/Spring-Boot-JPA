@@ -10,7 +10,7 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: none #create: 실행시점에 다 지우고 다시 생성
+      ddl-auto: create #create: 실행시점에 다 지우고 다시 생성
     properties:
       hibernate:
 #        show-sql: true
